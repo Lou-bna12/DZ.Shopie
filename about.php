@@ -10,8 +10,6 @@ $user_id = $_SESSION['user_id'];
 $user_id = '';
 };
 
-include 'components/wishlist_cart.php';
-
 ?>
 
 <!DOCTYPE html>
