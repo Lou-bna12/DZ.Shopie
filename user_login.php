@@ -5,12 +5,30 @@ include 'components/connect.php';
 session_start();
 
 if(isset($_SESSION['user_id'])){
-$user_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['user_id'];
 }else{
-$user_id = '';
+    $user_id = '';
 };
 
-include 'components/wishlist_cart.php';
+if(isset($_POST['submit'])){
+    $email = $_POST['email'];
+    $email = filter_var($email, FILTER_SANITIZE_STRING);
+    $pass = $_POST['pass'];
+    $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+
+    $select_user = $conn->prepare("SELECT* FROM `users` WHERE email = ? AND password = ? ");
+    $select_user->execute([$email, $pass]);
+    $row = $select_user->fetch(PDO::FETCH_ASSOC);
+
+    if($select_user->rowCount()  >  0){
+        $_SESSION['user_id'] = $row['id'];
+        header('location:home.php');
+    
+    }else{
+        $message[] = 'E-mail ou mot de passe incorrect';
+    }
+
+}
 
 ?>
 
@@ -39,8 +57,19 @@ include 'components/wishlist_cart.php';
 <section class="form-container">
 
 <form action="" method="POST">
-    <input type="email" required maxlength="50" name="email" 
-    placeholder="Insérer votre ad"
+    <h3>Se connecter maintenant</h3>
+    <input type="email" required maxlength="50" name="email"
+    placeholder="Insérer votre adresse mail" class="box" 
+    oninput="this.value = this.value.replace(/\s/g,'')">
+
+    <input type="password" required maxlength="20" name="pass"
+    placeholder="Insérer votre mot de passe" class="box" 
+    oninput="this.value = this.value.replace(/\s/g,'')">
+    <input type="submit" value="Se connecter" class="btn" name="submit">
+    <p>Vous n'avez pas de compte ?</p>
+    <a href="user_register.php" class="option-btn">S'inscrire maintenant</a>
+
+
 </form>
 </section>
 

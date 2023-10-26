@@ -5,14 +5,42 @@ include 'components/connect.php';
 session_start();
 
 if(isset($_SESSION['user_id'])){
-$user_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['user_id'];
 }else{
-$user_id = '';
+    $user_id = '';
 };
 
-include 'components/wishlist_cart.php';
+if(isset($_POST['submit'])){
+
+    $name = $_POST['name'];
+    $name = filter_var($name, FILTER_SANITIZE_STRING);
+    $email = $_POST['email'];
+    $email = filter_var($email, FILTER_SANITIZE_STRING);
+    $pass = $_POST['pass'];
+    $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+    $cpass = $_POST['cpass'];
+    $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
+
+   $select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ?");
+    $select_user->execute([$email,]);
+    $row = $select_user->fetch(PDO::FETCH_ASSOC);
+
+    if($select_user->rowCount() > 0){
+        $message[] = 'L\'utilisateur existe déjà!';
+    }else{
+        if($pass != $cpass){
+            $message[] = 'Confirmer le mot de passe ne correspond pas';
+        }else{
+            $insert_user = $conn->prepare("INSERT INTO `users`(name, email, password) VALUES(?,?,?)");
+            $insert_user->execute([$name, $email, $cpass]);
+            $message[] = 'Inscrit avec succès, connectez-vous maintenant svp !';
+        }
+    }
+
+}
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +62,38 @@ include 'components/wishlist_cart.php';
     
 <?php include 'components/user_header.php'; ?>
 
+<!--user register section starts-->
 
+<section class="form-container">
+
+<form action="" method="POST">
+    <h3>S'inscrire maintenant</h3>
+    <input type="text" required maxlength="20" name="name"
+    placeholder="Insérer votre nom" class="box" 
+    oninput="this.value = this.value.replace(/\s/g,'')">
+
+    <input type="email" name="email" required placeholder="Insérer votre adresse e-mail"
+    maxlength="50"  class="box"
+    oninput="this.value = this.value.replace(/\s/g, '')">
+
+    <input type="password" required maxlength="20" name="pass"
+    placeholder="Insérer votre mot de passe" class="box" 
+    oninput="this.value = this.value.replace(/\s/g,'')">
+
+    <input type="password" required maxlength="20" name="cpass"
+    placeholder="Confirmer votre mot de passe" class="box" 
+    oninput="this.value = this.value.replace(/\s/g,'')">
+
+    <input type="submit" value="S'inscrire maintenant" class="btn" name="submit">
+    <p>Vous avez déjà un compte ?</p>
+    <a href="user_login.php" class="option-btn">Se connecter</a>
+
+
+</form>
+</section>
+
+
+<!--user register section ends-->
 
 
 <?php include 'components/footer.php'; ?>
