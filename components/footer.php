@@ -12,10 +12,10 @@
 
       <div class="box">
          <h3>Liens supplémentaires</h3>
-         <a href="user_login.php"> <i class="fas fa-angle-right"></i> Connexion</a>
-         <a href="user_register.php"> <i class="fas fa-angle-right"></i> S'inscrire</a>
+         <a href="user_login.php"> <i class="fas fa-angle-right"></i> Commandes</a>
          <a href="cart.php"> <i class="fas fa-angle-right"></i> Panier</a>
-         <a href="orders.php"> <i class="fas fa-angle-right"></i> Commandes</a>
+         <a href="quick_view.php"> <i class="fas fa-angle-right"></i> Favoris</a>
+         <a href="user_login.php"> <i class="fas fa-angle-right"></i> Connexion</a>
       </div>
 
       <div class="box">

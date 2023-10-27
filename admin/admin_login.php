@@ -8,7 +8,7 @@ if(isset($_POST['submit'])){
 
    $name = $_POST['name'];
    $name = filter_var($name, FILTER_SANITIZE_STRING);
-   $pass = sha1($_POST['pass']);
+   $pass = $_POST['pass'];
    $pass = filter_var($pass, FILTER_SANITIZE_STRING);
 
    $select_admin = $conn->prepare("SELECT * FROM `admins` WHERE name = ? AND password = ?");
@@ -58,9 +58,11 @@ if(isset($_POST['submit'])){
 
    <form action="" method="post">
       <h3>Se connecter maintenant</h3>
-      
-      <input type="text" name="name" required placeholder="Entrer votre nom" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
-      <input type="password" name="pass" required placeholder="Entrer votre mot de passe" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <p>Nom par défaut = <span>Admin</span> & le mot de passe = <span>111</span></p>
+      <input type="text" name="name" required placeholder="Entrer votre nom"
+      maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <input type="password" name="pass" required placeholder="Entrer votre mot de passe" 
+      maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="submit" value="Connexion" class="btn" name="submit">
    </form>
 

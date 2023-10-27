@@ -12,9 +12,9 @@ if(isset($_POST['submit'])){
 
     $name = $_POST['name'];
     $name = filter_var($name, FILTER_SANITIZE_STRING);
-    $pass = sha1($_POST['pass']);
+    $pass = $_POST['pass'];
     $pass = filter_var($pass, FILTER_SANITIZE_STRING);
-    $cpass = sha1($_POST['cpass']);
+    $cpass = $_POST['cpass'];
     $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
 
     $select_admin = $conn->prepare("SELECT * FROM `admins` WHERE name = ? ");
@@ -53,8 +53,8 @@ if(isset($_POST['submit'])){
 <body>
 <?php include '../components/admin_header.php'; ?>  
 
-  <!--register admin section start -->
-  
+<!--register admin section start -->
+
 <section class="form-container">
 <form action="" method="post">
     <h3>Inscription</h3>

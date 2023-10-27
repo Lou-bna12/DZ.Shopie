@@ -434,6 +434,96 @@ section {
   text-align: center;
 }
 
+.products .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 33rem);
+  gap: 1.5rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.products .box-container .box {
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.products .box-container .box .fa-eye,
+.products .box-container .box .fa-heart {
+  position: absolute;
+  top: 1rem;
+  height: 4.5rem;
+  width: 4.5rem;
+  line-height: 4.2rem;
+  font-size: 2rem;
+  border: var(--border);
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  color: var(--black);
+  transition: 0.2s linear;
+}
+
+.products .box-container .box .fa-eye {
+  left: -10rem;
+}
+
+.products .box-container .box .fa-heart {
+  right: -10rem;
+}
+
+.products .box-container .box .fa-eye:hover,
+.products .box-container .box .fa-heart:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.products .box-container .box:hover .fa-eye {
+  left: 1rem;
+}
+
+.products .box-container .box:hover .fa-heart {
+  right: 1rem;
+}
+
+.products .box-container .box .image {
+  height: 20rem;
+  width: 100%;
+  object-fit: contain;
+}
+
+.products .box-container .box .name {
+  font-size: 2rem;
+  color: var(--black);
+  margin-bottom: 1rem;
+}
+
+.products .box-container .box .flex {
+  display: flex;
+  margin: 1rem 0;
+  align-items: center;
+}
+
+.products .box-container .box .flex .price {
+  font-size: 2rem;
+  color: var(--main-color);
+  margin-right: auto;
+}
+
+.products .box-container .box .flex .qty {
+  font-size: 1.8rem;
+  border: var(--border);
+  border-radius: 0.5rem;
+  padding: 1.2rem 1.4rem;
+  color: var(--black);
+  width: 8rem;
+}
+
 .footer {
   background-color: var(--white);
   /* padding-bottom: 7rem; */
@@ -542,6 +632,10 @@ section {
   .flex-btn {
     flex-flow: column;
     gap: 0;
+  }
+
+  .products .box-container {
+    grid-template-columns: 1fr;
   }
 
   .quick-view form .row .image-container .sub-image img {
