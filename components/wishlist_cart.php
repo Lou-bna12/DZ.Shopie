@@ -2,7 +2,7 @@
 
 if(isset($_POST['add_to_wishlist'])){
 
-if($user_id == ''){
+    if($user_id == ''){
     header('location:user_login.php');
 }else{
 
@@ -56,7 +56,7 @@ if(isset($_POST['add_to_cart'])){
     $check_cart_numbers->execute([$name, $user_id]);
 
     if($check_cart_numbers->rowCount() > 0){
-        $message[] = 'Déjà ajouté au panier!';
+        $message[] = 'Déjà ajouté au panier !';
     }else{
 
         $check_wishlist_numbers = $conn->prepare("SELECT * FROM `wishlist` WHERE name = ? AND user_id = ?");
@@ -67,11 +67,14 @@ if(isset($_POST['add_to_cart'])){
             $delete_wishlist->execute([$name, $user_id]);
         }
 
-        $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
+        $insert_cart = $conn->prepare("INSERT INTO `cart` (user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
         $insert_cart->execute([$user_id, $pid, $name, $price, $qty, $image]);
-        $message[] = 'Ajouter au panier!';
+        $message[] = 'Ajouté au panier !';
+    
+    }
+
 }
+
 }
-} 
 
 ?>

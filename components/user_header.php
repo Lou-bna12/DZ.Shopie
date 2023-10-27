@@ -1,24 +1,24 @@
 <?php
-if(isset($message)){
+    if(isset($message)){
     foreach($message as $message){
         echo '
         <div class="message">
             <span>'.$message.'</span>
             <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-    </div>
+        </div>
         ';
+        }
     }
-}
 ?>
 
 <header class="header">
 
-<section class="flex">
+    <section class="flex">
 
-    <a href="home.php" class="logo">Shop<span>.Dz</span></a>
+    <a href="home.php" class="logo">Shopi<span>Dz</span></a>
 
     <nav class="navbar">
-<a href="home.php">Accueil</a>
+        <a href="home.php">Accueil</a>
         <a href="about.php">À propos</a>
         <a href="orders.php">Commandes</a>
         <a href="shop.php">Shop</a>
@@ -50,25 +50,26 @@ if(isset($message)){
             $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
         ?>
         <p><?= $fetch_profile["name"]; ?></p>
-        <a href="update_user.php" class="btn">Actualiser le profil</a>
+        <a href="update_user.php" class="btn">Mettre à jour le profil</a>
         <div class="flex-btn">
-            <a href="user_register.php" class="option-btn">S'inscrire</a>
             <a href="user_login.php" class="option-btn">Connexion</a>
+            <a href="user_register.php" class="option-btn">S'inscrire</a>
         </div>
-        <a href="components/user_logout.php" class="delete-btn" onclick="return confirm('Se déconnecter du site web ?');">Déconnexion</a> 
+        <a href="components/user_logout.php" class="delete-btn"
+        onclick="return confirm('Se déconnecter du site web ?');">Déconnexion</a> 
         <?php
             }else{
         ?>
-        <p>Veuillez vous connecter!</p>
+        <p>Veuillez d'abord vous connecter ou vous s'inscrire !</p>
         <div class="flex-btn">
-            <a href="user_register.php" class="option-btn">S'inscrire</a>
             <a href="user_login.php" class="option-btn">Connexion</a>
+            <a href="user_register.php" class="option-btn">S'inscrire</a>
         </div>
         <?php
-            }
-        ?>      
-        
-        
+
+}
+    ?>      
+
     </div>
 
 </section>

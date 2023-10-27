@@ -16,13 +16,13 @@ if(isset($_POST['submit'])){
     $name = filter_var($name, FILTER_SANITIZE_STRING);
     $email = $_POST['email'];
     $email = filter_var($email, FILTER_SANITIZE_STRING);
-    $pass = $_POST['pass'];
+    $pass = sha1($_POST['pass']);
     $pass = filter_var($pass, FILTER_SANITIZE_STRING);
-    $cpass = $_POST['cpass'];
+    $cpass = sha1($_POST['cpass']);
     $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
 
    $select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ?");
-    $select_user->execute([$email,]);
+    $select_user->execute([$email]);
     $row = $select_user->fetch(PDO::FETCH_ASSOC);
 
     if($select_user->rowCount() > 0){
@@ -31,9 +31,9 @@ if(isset($_POST['submit'])){
         if($pass != $cpass){
             $message[] = 'Confirmer le mot de passe ne correspond pas';
         }else{
-            $insert_user = $conn->prepare("INSERT INTO `users`(name, email, password) VALUES(?,?,?)");
+            $insert_user = $conn->prepare("INSERT INTO `users`(name, email, password) VALUES (?,?,?);");
             $insert_user->execute([$name, $email, $cpass]);
-            $message[] = 'Inscrit avec succès, connectez-vous maintenant svp !';
+            $message[] = 'Inscrit avec succès, connectez-vous maintenant!';
         }
     }
 
@@ -67,7 +67,9 @@ if(isset($_POST['submit'])){
 <section class="form-container">
 
 <form action="" method="POST">
+
     <h3>S'inscrire maintenant</h3>
+
     <input type="text" required maxlength="20" name="name"
     placeholder="Insérer votre nom" class="box" 
     oninput="this.value = this.value.replace(/\s/g,'')">
