@@ -8,7 +8,7 @@ $admin_id = $_SESSION['admin_id'];
 
 if(!isset($admin_id)){
   header('location:admin_login.php');
-}
+};
 
 if(isset($_POST['update_payment'])){
     $order_id = $_POST['order_id'];
@@ -16,7 +16,7 @@ if(isset($_POST['update_payment'])){
     $payment_status = filter_var($payment_status, FILTER_SANITIZE_STRING);
     $update_payment = $conn->prepare("UPDATE `orders` SET payment_status = ? WHERE id = ?");
     $update_payment->execute([$payment_status, $order_id]);
-    $message[] = 'Mise à jour de l\'état des paiements !';
+    $message[] = 'Mise à jour de  paiement !';
 }
 
 if(isset($_GET['delete'])){
@@ -44,53 +44,60 @@ if(isset($_GET['delete'])){
 <body>
 <?php include '../components/admin_header.php'; ?>  
 
+<!--placed irders section starts-->
+
 <section class="orders">
 
-<h1 class="heading">Commandes passées</h1>
+<h1 class="heading">Commandes effectuées</h1>
 
-<div class="box-container">
+  <div class="box-container">
 
-  <?php
-      $select_orders = $conn->prepare("SELECT * FROM `orders`");
-      $select_orders->execute();
-      if($select_orders->rowCount() > 0){
+    <?php
+    $select_orders = $conn->prepare("SELECT * FROM `orders`");
+    $select_orders->execute();
+    if($select_orders->rowCount() > 0){
         while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
-  ?>
-  <div class="box">
-      <p> Commander le : <span><?= $fetch_orders['placed_on']; ?></span> </p>
-      <p> Nom: <span><?= $fetch_orders['name']; ?></span> </p>
-      <p> Numéro : <span><?= $fetch_orders['number']; ?></span> </p>
-      <p> Adresse : <span><?= $fetch_orders['address']; ?></span> </p>
-      <p> Total des produits : <span><?= $fetch_orders['total_products']; ?></span> </p>
-      <p> Prix total : <span><?= $fetch_orders['total_price']; ?> €</span></p>
-      <p> Mode de paiement : <span><?= $fetch_orders['method']; ?></span> </p>
-      <form action="" method="post">
+
+?>
+<div class="box">
+
+  <p>Identifiant de l'utilisateur : <span><?= $fetch_orders['user_id']; ?></span></p>       
+  <p>Placé à la date suivante : <span><?= $fetch_orders['placed_on']; ?></span></p>
+  <p>Nom : <span><?= $fetch_orders['name']; ?></span></p>
+  <p>Numéro de téléphone : <span><?= $fetch_orders['number']; ?></span></p>
+  <p>Adresse e-mail : <span><?= $fetch_orders['email']; ?></span></p>
+  <p>Adresse : <span><?= $fetch_orders['address']; ?></span></p>
+  <p>Total des produits : <span><?= $fetch_orders['total_products']; ?></span></p>
+  <p>Prix total : <span><?= $fetch_orders['total_price']; ?> €</span></p>
+  <p>Mode de paiement : <span><?= $fetch_orders['method']; ?></span></p>
+
+  <form action="" method="POST">
       <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
-      <select name="payment_status" class="select">
-            <option selected disabled><?= $fetch_orders['payment_status']; ?></option>
-            <option value="En attente">En attente</option>
-            <option value="Terminé">Terminé</option>
-      </select>
-    <div class="flex-btn">
-        <input type="submit" value="Mettre à jour" class="option-btn" name="update_payment">
-        <a href="placed_orders.php?delete=<?= $fetch_orders['id']; ?>" class="delete-btn"
-        onclick="return confirm('Supprimer cette commande?');">Supprimer</a>
-      </div>
-      </form>
-  </div>
-  <?php
-        }
-      }else{
-        echo '<p class="empty">Aucune commande n\'a encore été effectuée !!</p>';
-      }
-  ?>
+        <select name="payment_status" class="drop-down">
+          <option value="" selected disabled><?= $fetch_orders['payment_status']; ?></option>
+          <option value="En attente">En attente</option>
+          <option value="Terminé">Terminé</option>
+        </select>
 
+        <div class="flex-btn">
+          <input type="submit" value="Mettre à jour" class="btn" name="update_payment">
+          <a href="placed_orders.php?delete=<?= $fetch_orders['id']; ?>" class="delete-btn"
+          onclick="return confirm('Supprimer cette commande ?');">Supprimer</a>
+        </div>
+  </form>
 </div>
+  <?php
+    }  
+  }else{
+    echo '<p class="empty">Ancun produit n\' été trouvé! </p>';
+  }
+  ?>
+  </div>
 
 </section>
 
-</section>
 
+<!--placed irders section ends-->
 
 <script src="../js/admin_script.js"></script>
 </body>
