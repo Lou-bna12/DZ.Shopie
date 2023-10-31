@@ -771,6 +771,103 @@ section {
   background-color: var(--black);
 }
 
+.checkout .display-orders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.checkout .display-orders p {
+  padding: 1rem 3rem;
+  border: var(--border);
+  border-radius: 0.5rem;
+  font-size: 2rem;
+  color: var(--black);
+  box-shadow: var(--box-shadow);
+  background-color: var(--white);
+}
+
+.checkout .display-orders p span {
+  color: var(--red);
+}
+
+.checkout .grand-total {
+  width: 100%;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--light-color);
+}
+
+.checkout .grand-total span {
+  color: var(--red);
+}
+
+.checkout form {
+  border: var(--border);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+  background-color: var(--white);
+}
+
+.checkout form .flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.checkout form .flex .inputBox {
+  flex: 1 1 40rem;
+}
+
+.checkout form .flex .inputBox span {
+  font-size: 1.7rem;
+  color: var(--light-color);
+}
+
+.checkout form .flex .inputBox .box {
+  width: 100%;
+  border: var(--border);
+  background-color: var(--light-bg);
+  padding: 1.4rem;
+  font-size: 1.8rem;
+  color: var(--black);
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+.show-orders .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.show-orders .box-container .box {
+  background-color: var(--white);
+  border-radius: 0.5rem;
+  border: var(--border);
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+  flex: 1 1 40rem;
+  padding-top: 1rem;
+}
+
+.show-orders .box-container .box p {
+  margin: 1rem 0;
+  font-size: 2rem;
+  color: var(--black);
+  line-height: 1.5;
+}
+
+.show-orders .box-container .box p span {
+  color: var(--main-color);
+}
+
 .footer {
   background-color: var(--white);
   /* padding-bottom: 7rem; */
