@@ -65,7 +65,7 @@ include 'components/wishlist_cart.php';
     class="image" alt="">
     <div class="name"><?= $fetch_product['name']; ?></div>
     <div class="flex">
-        <div class="price"><span><?= $fetch_product['price']; ?></span>€</div>
+        <div class="price"><span><?= $fetch_product['price']; ?></span> €</div>
         <input type="number" class="qty" name="qty" id="qty" min="1" max="99"
         value="1" onkeypress="if(this.value.lenght == 2) return false ;">
     </div>
@@ -83,16 +83,6 @@ include 'components/wishlist_cart.php';
 </div>
 
 </section>
-
-
-
-
-
-
-
-
-
-
 
 <!-- category section ends -->
 

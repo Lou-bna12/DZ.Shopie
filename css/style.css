@@ -129,6 +129,12 @@ section {
   text-transform: uppercase;
 }
 
+.disabled {
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
 .empty {
   border: var(--border);
   border-radius: 0.5rem;
@@ -426,6 +432,11 @@ section {
   background-color: var(--light-bg);
 }
 
+.form-container textarea {
+  height: 15rem;
+  resize: none;
+}
+
 .form-container form p {
   font-size: 2em;
   padding: 0.5rem;
@@ -507,6 +518,7 @@ section {
   display: flex;
   margin: 1rem 0;
   align-items: center;
+  gap: 1rem;
 }
 
 .products .box-container .box .flex .price {
@@ -522,6 +534,241 @@ section {
   padding: 1.2rem 1.4rem;
   color: var(--black);
   width: 8rem;
+}
+
+.products .box-container .box .flex .fa-edit {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 0.5rem;
+  background-color: var(--orange);
+  color: var(--white);
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.products .box-container .box .flex .fa-edit:hover {
+  color: var(--black);
+}
+
+.products .box-container .box .sub-total {
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  color: var(--light-color);
+}
+
+.products .box-container .box .sub-total span {
+  color: var(--red);
+}
+
+.products .grand-total {
+  margin: 0 auto;
+  margin-top: 2rem;
+  max-width: 50rem;
+  background-color: var(--white);
+  border: var(--border);
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+  text-align: center;
+}
+
+.products .grand-total p {
+  font-size: 2.5rem;
+  color: var(--light-color);
+  margin-bottom: 2.5rem;
+}
+
+.quick-view .box {
+  background-color: var(--white);
+  border: var(--border);
+  display: flex;
+  align-items: center;
+  gap: 7rem;
+  flex-wrap: wrap;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+}
+
+.quick-view .box .image-container {
+  flex-direction: 1 1 40rem;
+}
+
+.quick-view .box .content {
+  flex: 1 1 40rem;
+}
+
+.quick-view .box .image-container .big-image img {
+  height: 25rem;
+  width: 100%;
+  object-fit: contain;
+}
+
+.quick-view .box .image-container .small-images {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.quick-view .box .image-container .small-images img {
+  height: 7rem;
+  width: 10rem;
+  border: var(--border);
+  cursor: pointer;
+  transition: 0.2s linear;
+  object-fit: contain;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.quick-view .box .image-container .small-images img:hover {
+  transform: scale(0.8);
+}
+
+.quick-view .box .content .name {
+  font-size: 2rem;
+  color: var(--black);
+}
+
+.quick-view .box .flex {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.quick-view .box .flex .price {
+  font-size: 1.8rem;
+  color: var(--main-color);
+}
+
+.quick-view .box .flex .qty {
+  padding: 1.2rem 1.4rem;
+  border: var(--border);
+  border-radius: 0.5rem;
+  font: 1.8rem;
+  color: var(--black);
+}
+
+.quick-view .box .details {
+  font-size: 1.7rem;
+  color: var(--light-color);
+  line-height: 2;
+  margin: 0.5rem 0;
+}
+
+.about .row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.about .row .image {
+  flex: 1 1 40rem;
+}
+
+.about .row .image img {
+  width: 100%;
+}
+
+.about .row .content {
+  flex: 1 1 40rem;
+}
+
+.about .row .content h3 {
+  font-size: 4rem;
+  color: var(--black);
+  text-transform: capitalize;
+}
+
+.about .row .content p {
+  padding: 1rem;
+  line-height: 2;
+  font-size: 1.8rem;
+  color: var(--light-color);
+}
+
+.about .row .content .btn {
+  display: inline-block;
+  width: auto;
+}
+
+.reviews .slide {
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--white);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+  border: var(--border);
+  margin-bottom: 5rem;
+}
+
+.reviews .slide img {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 505%;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+}
+
+.reviews .slide p {
+  padding: 1rem 0;
+  line-height: 2;
+  font-size: 1.5rem;
+  color: var(--light-color);
+}
+
+.reviews .slide .stars {
+  display: inline-block;
+  margin-bottom: 1rem;
+  background-color: var(--light-bg);
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  border: var(--border);
+}
+
+.reviews .slide .stars i {
+  margin: 0 0.3rem;
+  font-size: 1.7rem;
+  color: var(--orange);
+}
+
+.reviews .slide h3 {
+  font-size: 2rem;
+  color: var(--black);
+}
+
+.search-form form {
+  display: flex;
+  gap: 1rem;
+}
+
+.search-form form .box {
+  padding: 1.4rem;
+  font-size: 1.8rem;
+  color: var(--black);
+  border: var(--border);
+  box-shadow: var(--border);
+  background-color: var(--white);
+  border: 0.5rem;
+  width: 100%;
+}
+
+.search-form form .fa-search {
+  width: 6rem;
+  font-size: 2.5rem;
+  background-color: var(--main-color);
+  color: var(--white);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.search-form form .fa-search:hover {
+  background-color: var(--black);
 }
 
 .footer {
@@ -638,8 +885,9 @@ section {
     grid-template-columns: 1fr;
   }
 
-  .quick-view form .row .image-container .sub-image img {
+  .quick-view .box .image-container .small-images img {
     width: 8rem;
+    height: 6rem;
   }
 
   .checkout-orders form .flex .inputBox {

@@ -16,11 +16,12 @@ window.onscroll = () => {
   profile.classList.remove('active');
 };
 
-let mainImage = document.querySelector(
-  '.quick-view .box .row .image-container .main-image img'
-);
 let subImages = document.querySelectorAll(
-  '.quick-view .box .row .image-container .sub-image img'
+  '.quick-view .box .image-container .small-images img'
+);
+
+let mainImage = document.querySelector(
+  '.quick-view .box .image-container .big-image img'
 );
 
 subImages.forEach((images) => {

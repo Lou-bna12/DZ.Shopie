@@ -135,6 +135,8 @@ if(!isset($admin_id)){
 
 
 <!--aadmin tableau de bord section ends-->
+
 <script src="../js/admin_script.js"></script>
+
 </body>
 </html>

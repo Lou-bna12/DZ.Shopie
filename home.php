@@ -8,7 +8,7 @@ if(isset($_SESSION['user_id'])){
 $user_id = $_SESSION['user_id'];
 }else{
 $user_id = '';
-};
+}
 
 include 'components/wishlist_cart.php';
 
@@ -103,7 +103,7 @@ include 'components/wishlist_cart.php';
 
         <a href="category.php?category=Ordinateur portable" class="swiper-slide slide">
             <img src="images/icon-1.png" alt="">
-            <h3> Ordinateur portable </h3>
+            <h3> Pc portable </h3>
         </a>
 
         <a href="category.php?category=Télévision" class="swiper-slide slide">
@@ -169,16 +169,17 @@ include 'components/wishlist_cart.php';
     <input type="hidden" name="price" value="<?= $fetch_product['price']; ?>">
     <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
 
-    <button class="fas fa-heart" type="submit" name="add_to_wishlist"></button>
-    
+    <button type="submit" name="add_to_wishlist"  class="fas fa-heart">
+    </button>
     <a href="quick_view.php?pid=<?= $fetch_product['id']; ?>" class="fas fa-eye"></a>
+    
     <img src="uploaded_img/<?= $fetch_product["image_01"]; ?>"
     class="image" alt="">
     <div class="name"><?= $fetch_product['name']; ?></div>
     <div class="flex">
         <div class="price"><span><?= $fetch_product['price']; ?></span>€</div>
-        <input type="number" class="qty" name="qty" id="qty" min="1" max="99"
-        value="1" onkeypress="if(this.value.lenght == 2) return false ;">
+        <input type="number" class="qty" name="qty" min="1" max="99"
+        value="1" onkeypress="if(this.value.length == 2) return false ;">
     </div>
 <input type="submit" value="Ajouter au panier" name="add_to_cart" class="btn">
 </form>

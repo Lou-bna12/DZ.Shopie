@@ -38,46 +38,49 @@ include 'components/wishlist_cart.php';
 
 <section class="quick-view">
 
+<h1 class="heading">Vue d'ensemble</h1>
 
 <?php
+
     $pid = $_GET['pid'];
     $select_products = $conn->prepare("SELECT * FROM `products` WHERE id = ?");
     $select_products->execute([$pid]);
     if($select_products->rowCount() > 0){
-        while($fetch_product = $select_products->fetch(PDO::FETCH_ASSOC)){
+        while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){
 ?>
 
 <form action="" method="post" class="box">
-    <input type="hidden" name="pid" value="<?= $fetch_product['id']; ?>">
-    <input type="hidden" name="name" value="<?= $fetch_product['name']; ?>">
-    <input type="hidden" name="price" value="<?= $fetch_product['price']; ?>">
-    <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
+    <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
+    <input type="hidden" name="name" value="<?= $fetch_products['name']; ?>">
+    <input type="hidden" name="price" value="<?= $fetch_products['price']; ?>">
+    <input type="hidden" name="image" value="<?= $fetch_products['image_01']; ?>">
 
-    <div class="main-image">
+    <div class="image-container">
         <div class="big-image">
-        <img src="uploaded_img/<?= $fetch_product["image_01"]; ?>" alt="">
+        <img src="uploaded_img/<?= $fetch_products['image_01']; ?>" alt="">
         </div>
-        <div class="small-image">
-        <img src="uploaded_img/<?= $fetch_product["image_01"]; ?>" alt="">
-        <img src="uploaded_img/<?= $fetch_product["image_02"]; ?>" alt="">
-        <img src="uploaded_img/<?= $fetch_product["image_03"]; ?>" alt="">
+        <div class="small-images">
+        <img src="uploaded_img/<?= $fetch_products['image_01']; ?>" alt="">
+        <img src="uploaded_img/<?= $fetch_products['image_02']; ?>" alt="">
+        <img src="uploaded_img/<?= $fetch_products['image_03']; ?>" alt="">
         </div>
     </div>    
+    
     <div class="content">
-    <div class="name"><?= $fetch_product['name']; ?></div>
-    <div class="price"><span><?= $fetch_product['price']; ?></span>€</div>
-    <input type="number" class="qty" name="qty" id="qty" min="1" max="99"
-    value="1" onkeypress="if(this.value.lenght == 2) return false ;">
-    </div>
-<div class="flex-btn">
-    <input type="submit" value="Ajouter au panier" name="add_to_cart" class="btn">
-    <input type="submit" value="Ajouter au favoris" name="add_to_wishlist" class="option-btn">
+        <div class="name"><?= $fetch_products['name']; ?></div>
+    <div class="flex">
+        <div class="price"><span><?= $fetch_products['price']; ?> €</span></div>
+        <input type="number"name="qty" class="qty" min="1" max="99"
+        value="1" onkeypress="if(this.value.length == 2) return false;">
+    </div>   
+
+    <div class="details"><?= $fetch_products['details']?></div>
+    <div class="flex-btn">
+        <input type="submit" value="Ajouter au panier" name="add_to_cart" class="btn">
+        <input type="submit" value="Ajouter aux favoris" name="add_to_wishlist"
+        class="option-btn">
 </div>
-    </div>
-
 </form>
-
-
 <?php
     }
 }else{
@@ -97,6 +100,7 @@ include 'components/wishlist_cart.php';
 
 
 <?php include 'components/footer.php'; ?>
+
 <script src="js/script.js"></script>
 </body>
 </html>

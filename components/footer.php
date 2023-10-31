@@ -14,7 +14,7 @@
          <h3>Liens supplémentaires</h3>
          <a href="user_login.php"> <i class="fas fa-angle-right"></i> Commandes</a>
          <a href="cart.php"> <i class="fas fa-angle-right"></i> Panier</a>
-         <a href="quick_view.php"> <i class="fas fa-angle-right"></i> Favoris</a>
+         <a href="wishlist.php"> <i class="fas fa-angle-right"></i> Favoris</a>
          <a href="user_login.php"> <i class="fas fa-angle-right"></i> Connexion</a>
       </div>
 

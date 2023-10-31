@@ -26,7 +26,8 @@ if(isset($_POST['add_to_wishlist'])){
     }elseif($check_cart_numbers->rowCount() > 0){
         $message[] = 'Déjà ajouté au panier !';
     }else{
-        $insert_wishlist = $conn->prepare("INSERT INTO `wishlist`(user_id, pid, name, price, image) VALUES(?,?,?,?,?)");
+        $insert_wishlist = $conn->prepare("INSERT INTO `wishlist`
+        (user_id, pid, name, price, image) VALUES(?,?,?,?,?)");
         $insert_wishlist->execute([$user_id, $pid, $name, $price, $image]);
         $message[] = 'Ajouté à la liste de souhaits !';
     }

@@ -88,7 +88,7 @@ if(isset($_GET['delete'])){
 
 
 <!--admins accounts section endSs -->
-  
+
 <script src="../js/admin_script.js"></script>
 </body>
 </html>
