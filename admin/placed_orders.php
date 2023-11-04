@@ -42,6 +42,7 @@ if(isset($_GET['delete'])){
 
 </head>
 <body>
+
 <?php include '../components/admin_header.php'; ?>  
 
 <!--placed irders section starts-->
@@ -62,7 +63,7 @@ if(isset($_GET['delete'])){
 <div class="box">
 
   <p>Identifiant de l'utilisateur : <span><?= $fetch_orders['user_id']; ?></span></p>       
-  <p>Placé à la date suivante : <span><?= $fetch_orders['placed_on']; ?></span></p>
+  <p>Commandée à la date suivante : <span><?= $fetch_orders['placed_on']; ?></span></p>
   <p>Nom : <span><?= $fetch_orders['name']; ?></span></p>
   <p>Numéro de téléphone : <span><?= $fetch_orders['number']; ?></span></p>
   <p>Adresse e-mail : <span><?= $fetch_orders['email']; ?></span></p>

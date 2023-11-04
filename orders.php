@@ -59,7 +59,7 @@ $user_id = '';
     <p>Adresse : <span><?= $fetch_orders['address']; ?></span></p>
     <p> Mode de paiement : <span><?= $fetch_orders['method']; ?></span></p>
     <p> Vos commandes : <span><?= $fetch_orders['total_products']; ?></span></p>
-    <p>Prix total : <span>$<?= $fetch_orders['total_price']; ?>/-</span></p>
+    <p>Prix total : <span><?= $fetch_orders['total_price']; ?> €</span></p>
     <p>Statut du paiement : <span style="color:<?php if($fetch_orders['payment_status'] == 'En attente')
     { echo 'red'; }else{ echo 'green'; }; ?>"><?= $fetch_orders['payment_status']; ?></span> </p>
 </div>
