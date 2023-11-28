@@ -72,6 +72,14 @@ if(isset($_POST['submit'])){
 
 
 </form>
+<!-- Code pour afficher les messages -->
+<?php
+if (!empty($message)) {
+    foreach ($message as $msg) {
+        echo '<div>' . htmlspecialchars($msg) . '</div>';
+    }
+}
+?>
 </section>
 
 

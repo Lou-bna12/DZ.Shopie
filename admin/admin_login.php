@@ -58,7 +58,7 @@ if(isset($_POST['submit'])){
 
    <form action="" method="post">
       <h3>Se connecter maintenant</h3>
-      <p>Nom par défaut = <span>Admin</span> & le mot de passe = <span>111</span></p>
+      <!--<p>Nom par défaut = <span>Admin</span> & le mot de passe = <span>111</span></p>-->
       <input type="text" name="name" required placeholder="Entrer votre nom"
       maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="password" name="pass" required placeholder="Entrer votre mot de passe" 

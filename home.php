@@ -75,16 +75,7 @@ include 'components/wishlist_cart.php';
     </div>
 </div>
 
-<div class="swiper-slide slide">
-    <div class="image">
-        <img src="images/home-img-4.png" alt="">
-    </div>
-    <div class="content">
-        <span>Jusqu'à 50% de réduction</span>
-        <h3>Robes</h3>
-        <a href="shop.php" class="btn" >Achetez maintenant</a>
-    </div>
-</div>
+
 
     </div>
 

@@ -22,10 +22,10 @@ if(isset($_POST['submit'])){
 
 
     if($select_admin->rowCount() > 0){
-        $message[] = 'Le nom d\'utilisateur existe déjà';
+        $message[] = 'Une erreur s\'est produite lors de la création du compte.';
     }else{
     if($pass != $cpass) {
-        $message[] = 'Le mot de passe ne correspond pas!';
+        $message[] = 'Une erreur s\'est produite lors de la création du compte.';
     }else{
         $insert_admin = $conn->prepare("INSERT INTO `admins`(name, password) VALUES(?,?)");
         $insert_admin->execute([$name, $cpass]);
@@ -56,6 +56,7 @@ if(isset($_POST['submit'])){
 <!--register admin section start -->
 
 <section class="form-container">
+
 <form action="" method="post">
     <h3>Inscription</h3>
     
@@ -67,6 +68,15 @@ if(isset($_POST['submit'])){
     class="box" oninput="this.value = this.value.replace(/\s/g, '')">
     <input type="submit" value="S'inscrire" class="btn" name="submit">
 </form>
+
+<!-- Code pour afficher les messages -->
+<?php
+if (!empty($message)) {
+    foreach ($message as $msg) {
+        echo '<div>' . htmlspecialchars($msg) . '</div>';
+    }
+}
+?>
 
 </section>
 
