@@ -23,6 +23,10 @@ if(isset($_POST['submit'])){
 
     if($select_user->rowCount()  >  0){
         $_SESSION['user_id'] = $row['id'];
+
+         // Ajouter le code pour définir le cookie
+         setcookie('user_id', $row['id'], time() + 6 * 60 * 60, '/');
+    
         header('location:home.php');
     
     }else{
@@ -30,6 +34,8 @@ if(isset($_POST['submit'])){
     }
 
 }
+
+
 
 ?>
 

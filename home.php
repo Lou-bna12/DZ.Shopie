@@ -10,6 +10,10 @@ $user_id = $_SESSION['user_id'];
 $user_id = '';
 }
 
+
+
+
+
 include 'components/wishlist_cart.php';
 
 ?>
@@ -255,6 +259,12 @@ var swiper = new Swiper(".products-slider", {
 },
 });
 </script>
+
+<div id="cookie-notification" class="cookies-notification">
+        <p>Nous utilisons des cookies pour améliorer votre expérience. Acceptez-vous l'utilisation de cookies ?</p>
+        <button  onclick="acceptCookies()">Accepter</button>
+        <button  onclick="rejectCookies()">Refuser</button>
+    </div>
 
 </body>
 </html>

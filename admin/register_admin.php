@@ -69,14 +69,7 @@ if(isset($_POST['submit'])){
     <input type="submit" value="S'inscrire" class="btn" name="submit">
 </form>
 
-<!-- Code pour afficher les messages -->
-<?php
-if (!empty($message)) {
-    foreach ($message as $msg) {
-        echo '<div>' . htmlspecialchars($msg) . '</div>';
-    }
-}
-?>
+
 
 </section>
 

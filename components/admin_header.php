@@ -33,7 +33,7 @@ if(isset($message)){
 
     <div class="profile">
         <?php
-            $select_profile = $conn->prepare("SELECT * FROM `admins` WHERE id = ?");
+            $select_profile = $conn->prepare("SELECT * FROM `admins` WHERE id = ?");   
             $select_profile->execute([$admin_id]);
             $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
         ?>

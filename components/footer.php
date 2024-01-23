@@ -22,7 +22,7 @@
          <h3>Contact info</h3>
          <a href="tel:1234567890"><i class="fas fa-phone"></i> +123 456 7899</a>
          <a href="tel:11122233333"><i class="fas fa-phone"></i> +111 222 3333</a>
-         <a href="mailto:ahcene@gmail.com"><i class="fas fa-envelope"></i> ahcene@gmail.com</a>
+         <a href="mail:ahcene@gmail.com"><i class="fas fa-envelope"></i> ahcene@gmail.com</a>
          <a href="https://www.google.com/myplace"><i class="fas fa-map-marker-alt"></i> Cholet, France - 49300 </a>
       </div>
 
@@ -31,10 +31,13 @@
          <a href="#"><i class="fab fa-facebook-f"></i>facebook</a>
          <a href="#"><i class="fab fa-twitter"></i>X</a>
          <a href="#"><i class="fab fa-instagram"></i>instagram</a>
+      
    </div>
+
 
    </section>
 
    <div class="credit">&copy; copyright @ <?= date('Y'); ?> by <span>Loubna Sellam</span> | all rights reserved!</div>
+
 
 </footer>
