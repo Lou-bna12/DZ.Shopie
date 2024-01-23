@@ -22,12 +22,17 @@ $user_id = '';
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Commandes</title>
 
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" defer></script>
+
 <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
 <!-- font awesome cdn link  -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
 <!-- custom css file link  -->
 <link rel="stylesheet" href="css/style.css">
+
+
 
 </head>
 <body>   
@@ -75,10 +80,34 @@ $user_id = '';
 
 </section>
 
-
-
-
 <!--orders section ends-->
+
+<!-- Ajout la div pour afficher la carte -->
+<div id="map" style="height: 400px;"></div>
+
+<script>
+function initMap() {
+    // Coordonnées de la position initiale (par exemple, Algérie)
+    var myLatLng = [28.0339, 1.6596];
+
+    // Créer une carte centrée sur la position initiale
+    var map = L.map('map').setView(myLatLng, 5);
+
+    // Ajouter une couche OpenStreetMap à la carte
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Ajouter un marqueur à la position initiale
+    L.marker(myLatLng).addTo(map)
+    .bindPopup('Exemple de position').openPopup();
+}
+
+  // Initialiser la carte lors du chargement de la page
+document.addEventListener('DOMContentLoaded', function () {
+    initMap();
+});
+</script>
 
 <?php include 'components/footer.php'; ?>
 <script src="js/script.js"></script>

@@ -50,15 +50,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Fonction pour afficher la notification des cookies
 function showCookiesNotification() {
+  // Récupérer l'élément avec l'ID 'cookie-notification'
   var notification = document.getElementById('cookie-notification');
-  notification.style.display = 'flex'; // j'ai Utilisé 'flex' pour une meilleure disposition
+
+  // Vérifier si l'élément existe avant d'essayer d'accéder à sa propriété 'style'
+  if (notification) {
+    // Définir la propriété 'display' sur 'flex'
+    notification.style.display = 'flex';
+  }
 }
 
 // Fonction pour définir le cookie 'cookiesAccepted' lors de l'acceptation
 function acceptCookies() {
-  // Définir une durée de validité du cookie (par exemple, 30 jours)
+  // Définir une durée de validité du cookie
   var expiration = new Date();
-  expiration.setTime(expiration.getTime() + 6 * 60 * 60 * 1000);
+  expiration.setTime(expiration.getTime() + 1 * 60 * 60 * 1000);
 
   // Créer un cookie avec le nom 'cookiesAccepted' et la valeur 'true'
   document.cookie =
@@ -72,7 +78,20 @@ function acceptCookies() {
 function rejectCookies() {
   // Ajoutez le code pour gérer le rejet des cookies ici
   alert("Vous avez refusé l'utilisation des cookies.");
+
+  // Masquer la notification
   document.getElementById('cookie-notification').style.display = 'none';
+
+  // Définir un cookie pour enregistrer le refus des cookies
+  document.cookie =
+    'cookiesRejected=true; expires=' + getExpirationTime(1) + '; path=/';
+}
+
+// Fonction pour obtenir le temps d'expiration du cookie
+function getExpirationTime(hours) {
+  var expiration = new Date();
+  expiration.setTime(expiration.getTime() + hours * 60 * 60 * 1000);
+  return expiration.toUTCString();
 }
 
 // Fonction pour obtenir la valeur d'un cookie par son nom

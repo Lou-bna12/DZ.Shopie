@@ -870,21 +870,23 @@ section {
 
 .cookies-notification {
   position: fixed;
-  bottom: 20px; /* Ajustez la marge inférieure selon vos préférences */
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0;
+  left: 0;
+  width: 100%;
   background-color: #333;
   color: #fff;
   text-align: center;
   padding: 10px;
   display: none;
-  z-index: 999;
+  z-index: 1000;
 }
 
 .cookies-notification p {
   margin: 0;
   font-size: 14px;
   display: inline-block;
+  vertical-align: middle;
+  width: 100%; /* Modification pour prendre toute la largeur en mode responsive */
 }
 
 .cookies-notification button {
@@ -894,6 +896,7 @@ section {
   border: none;
   padding: 5px 10px;
   cursor: pointer;
+  vertical-align: middle;
 }
 
 .cookies-notification button:hover {
@@ -1021,5 +1024,16 @@ section {
 
   .checkout-orders form .flex .inputBox {
     width: 100%;
+  }
+}
+
+/* Media Query pour rendre la notification responsive */
+
+@media (max-width: 768px) {
+  .cookies-notification p,
+  .cookies-notification button {
+    display: block;
+    margin: 10px auto;
+    width: auto; /* Modifier pour revenir à la largeur par défaut en mode responsive */
   }
 }

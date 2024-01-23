@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
         $_SESSION['user_id'] = $row['id'];
 
          // Ajouter le code pour définir le cookie
-         setcookie('user_id', $row['id'], time() + 6 * 60 * 60, '/');
+         setcookie('user_id', $row['id'], time() + 1 * 60 * 60, '/');
     
         header('location:home.php');
     
