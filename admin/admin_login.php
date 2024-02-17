@@ -61,12 +61,27 @@ if(isset($_POST['submit'])){
       <!--<p>Nom par défaut = <span>Admin</span> & le mot de passe = <span>111</span></p>-->
       <input type="text" name="name" required placeholder="Entrer votre nom"
       maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
-      <input type="password" name="pass" required placeholder="Entrer votre mot de passe" 
+      <input type="password" name="pass" required placeholder="Entrer votre mot de passe" id="password"
       maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <i class="far fa-eye" id="togglePassword" style="margin-left: -450px ;cursor: pointer;"></i>
       <input type="submit" value="Connexion" class="btn" name="submit">
    </form>
 
 </section>
    
+<script>
+   const togglePassword = document.querySelector('#togglePassword');
+   const passwordInput = document.querySelector('#password');
+
+   togglePassword.addEventListener('click', function () {
+   const type =
+   passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+   passwordInput.setAttribute('type', type);
+  // Basculer l'icône entre l'œil ouvert et l'œil barré
+   this.classList.toggle('fa-eye-slash');
+});
+
+</script>
+
 </body>
 </html>

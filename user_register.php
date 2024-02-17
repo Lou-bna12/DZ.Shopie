@@ -57,6 +57,7 @@ if(isset($_POST['submit'])){
 <!-- custom css file link  -->
 <link rel="stylesheet" href="css/style.css">
 
+
 </head>
 <body>   
     
@@ -79,12 +80,14 @@ if(isset($_POST['submit'])){
     oninput="this.value = this.value.replace(/\s/g, '')">
 
     <input type="password" required maxlength="20" name="pass"
-    placeholder="Insérer votre mot de passe" class="box" 
+    placeholder="Insérer votre mot de passe" class="box" id="password"
     oninput="this.value = this.value.replace(/\s/g,'')">
+    <i class="far fa-eye" id="togglePassword" style=" margin-left: -10px ; cursor: pointer;"> </i>
 
     <input type="password" required maxlength="20" name="cpass"
-    placeholder="Confirmer votre mot de passe" class="box" 
+    placeholder="Confirmer votre mot de passe" class="box"
     oninput="this.value = this.value.replace(/\s/g,'')">
+
 
     <input type="submit" value="S'inscrire maintenant" class="btn" name="submit">
     <p>Vous avez déjà un compte ?</p>
@@ -98,7 +101,28 @@ if(isset($_POST['submit'])){
 <!--user register section ends-->
 
 
+
 <?php include 'components/footer.php'; ?>
 <script src="js/script.js"></script>
+
+
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const passwordInput = document.querySelector('#password');
+
+    togglePassword.addEventListener('click', function () {
+    const type =
+    passwordInput.getAttribute('type') === 'password'  ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+  // Basculer l'icône entre l'œil ouvert et l'œil barré
+    this.classList.toggle('fa-eye-slash');
+});
+
+
+
+    
+
+
+</script>
 </body>
 </html>
