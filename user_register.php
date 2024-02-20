@@ -82,7 +82,7 @@ if(isset($_POST['submit'])){
     <input type="password" required maxlength="20" name="pass"
     placeholder="Insérer votre mot de passe" class="box" id="password"
     oninput="this.value = this.value.replace(/\s/g,'')">
-    <i class="far fa-eye" id="togglePassword" style=" margin-left: -10px ; cursor: pointer;"> </i>
+    <i class="far fa-eye" id="togglePassword" style=" cursor: pointer;"> </i>
 
     <input type="password" required maxlength="20" name="cpass"
     placeholder="Confirmer votre mot de passe" class="box"

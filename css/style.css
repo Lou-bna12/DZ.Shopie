@@ -93,6 +93,19 @@ section {
   gap: 1rem;
 }
 
+/* Style pour l'icône de l'œil */
+#togglePassword {
+  margin-left: 5px; /* Ajustez la marge pour positionner l'icône */
+  cursor: pointer; /* Changez le curseur au survol de l'icône */
+  color: #333; /* Couleur de l'icône (personnalisez selon vos préférences) */
+  transition: color 0.3s ease; /* Ajoutez une transition pour la couleur */
+}
+
+/* Style pour l'icône de l'œil lorsqu'il est masqué */
+#togglePassword.fa-eye-slash {
+  color: #999; /* Couleur différente pour l'icône masquée */
+}
+
 .message {
   position: sticky;
   top: 0;
