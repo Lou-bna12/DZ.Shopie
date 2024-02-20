@@ -96,13 +96,15 @@ function getExpirationTime(hours) {
 
 // Fonction pour obtenir la valeur d'un cookie par son nom
 function getCookie(cookieName) {
-  var name = cookieName + '=';
-  var cookies = document.cookie.split(';');
+  var name = cookieName + '='; // Crée une chaîne 'name' qui sera utilisée pour rechercher le cookie dans la liste des cookies.
+  var cookies = document.cookie.split(';'); //Divise la chaîne complète de tous les cookies en parties individuelles en utilisant le point-virgule comme délimiteur. Cela crée un tableau (cookies) contenant chaque cookie comme élément.
   for (var i = 0; i < cookies.length; i++) {
-    var cookie = cookies[i].trim();
+    //une boucle à travers chaque partie des cookies.
+    var cookie = cookies[i].trim(); //Pour chaque partie, supprime les espaces en début et fin avec la méthode trim().
     if (cookie.indexOf(name) === 0) {
-      return cookie.substring(name.length, cookie.length);
+      //Vérifie si la partie commence par la chaîne 'name' (le nom du cookie recherché)
+      return cookie.substring(name.length, cookie.length); //Si le cookie est trouvé, retourne la valeur du cookie (substring après le nom).
     }
   }
-  return null;
+  return null; //Si la boucle se termine sans trouver le cookie, retourne null.
 }
